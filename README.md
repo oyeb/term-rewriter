@@ -21,13 +21,19 @@ look at the test and make it pass! Classic TDD.
 > `narrow` on the [web page
 > (lec-06)](https://www.cse.iitb.ac.in/~ananya/cs467/lec-06.html).
 
-## `MATCH`
+### Issue board is locked. Use Moodle
+### Do not fork this repo, clone it.
+### Do not cheat, [collaborate](https://www.cse.iitb.ac.in/~supratik/courses/copying-and-discussion.html).
+
+---------
+
+# `MATCH`
 We've already implemented it for you (`src/Match.hs`).
 
 > Start with `src/Language.hs`, it describes the data types we operate on and
 > some utilities.
 
-## `UNIFY`
+# Task one: `UNIFY`
 This is your first task. Complete the function bodies. You are free to ignore
 completing some suggested bodies, **but you must define the functions exported by
 the module.**
@@ -48,6 +54,7 @@ Importing modules can do selective imports using similar syntax, and can also do
 qualified imports (much like the `from ___ import ___ as ___` idiom from
 python).
 
-### Issue board is locked. Use Moodle
-### Do not fork this repo, clone it.
-### Do not cheat, [collaborate](https://www.cse.iitb.ac.in/~supratik/courses/copying-and-discussion.html).
+# Task two: `SIMPLIFY`
+Given a set of rules and a ground term (that has no variables), simplify it.
+
+> The Simplify.hs` module is under construction! I'll add it as soon as I can.
