@@ -57,4 +57,54 @@ python).
 # Task two: `SIMPLIFY`
 Given a set of rules and a ground term (that has no variables), simplify it.
 
-> The Simplify.hs` module is under construction! I'll add it as soon as I can.
+Complete the function bodies. You are free to ignore completing some suggested
+bodies, **but you must define the functions exported by the module.**
+
+Take a look at `Language.hs` there's a `Rule` definition. For examples look at `Spec.hs`.
+
+# Task three (optional): `DERIVE`
+
+This is probably ungraded. But is extremely fun to implement. While simplifying all you have to do is remember which rules are used in the derivation. See example below. The format is self-explanatory.
+
+```
+vx = Var "x"
+vy = Var "y"
+zero = Fn "0" []
+succ x = Fn "succ" [x]
+addFn a b = Fn "add" [a, b]
+mulFn a b = Fn "mul" [a, b]
+one = succ zero
+two = succ one
+three = succ two
+four = succ three
+
+rules = [ Rule "add_zero" (addFn vx zero) (vx)
+        , Rule "add"      (addFn vy (succ vx)) (addFn (succ vy) vx)
+        , Rule "mul_zero" (mulFn vx zero) (zero)
+        , Rule "mul"      (mulFn vy (succ vx)) (addFn (mulFn vy vx) vy)]
+
+showDerivation $ head $ derive rules (mulFn two two)
+---
+(a) mul(suc(suc(0)), suc(suc(0)))
+  ==> add(mul(suc(suc(0)), suc(0)), suc(suc(0)))		mul
+  ==> add(suc(mul(suc(suc(0)), suc(0))), suc(0))		add
+  ==> add(suc(suc(mul(suc(suc(0)), suc(0)))), 0)		add
+  ==> suc(suc(mul(suc(suc(0)), suc(0))))		add_zer0
+(a) suc(mul(suc(suc(0)), suc(0)))
+(a) mul(suc(suc(0)), suc(0))
+  ==> suc(suc(add(mul(suc(suc(0)), 0), suc(suc(0)))))		mul
+(a) suc(add(mul(suc(suc(0)), 0), suc(suc(0))))
+(a) add(mul(suc(suc(0)), 0), suc(suc(0)))
+  ==> suc(suc(add(suc(mul(suc(suc(0)), 0)), suc(0))))		add
+(a) suc(add(suc(mul(suc(suc(0)), 0)), suc(0)))
+(a) add(suc(mul(suc(suc(0)), 0)), suc(0))
+  ==> suc(suc(add(suc(suc(mul(suc(suc(0)), 0))), 0)))		add
+(a) suc(add(suc(suc(mul(suc(suc(0)), 0))), 0))
+(a) add(suc(suc(mul(suc(suc(0)), 0))), 0)
+  ==> suc(suc(suc(suc(mul(suc(suc(0)), 0)))))		add_zer0
+(a) suc(suc(suc(mul(suc(suc(0)), 0))))
+(a) suc(suc(mul(suc(suc(0)), 0)))
+(a) suc(mul(suc(suc(0)), 0))
+(a) mul(suc(suc(0)), 0)
+  ==> suc(suc(suc(suc(0))))		mul_zer0
+```
