@@ -24,6 +24,8 @@ look at the test and make it pass! Classic TDD.
 ### Issue board is locked. Use Moodle
 ### Do not fork this repo, clone it.
 ### Do not cheat, [collaborate](https://www.cse.iitb.ac.in/~supratik/courses/copying-and-discussion.html).
+### Solution available!
+The TA's solution can be found in the `solution` branch. Enjoy!
 
 ---------
 
