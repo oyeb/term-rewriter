@@ -40,6 +40,10 @@ data Rule = Assume
 --         , Rule "add"      (Fn "+" [Var "y", Fn "s" [Var "x"]]) (Fn "+" [Fn "s" [Var "y"], Var "x"])]
 --
 
+showRules :: [Rule] -> IO ()
+showRules = putStrLn . unlines . map render
+  where render rule = name rule ++ ":\t" ++ show (lhs rule) ++ " == " ++ show (rhs rule)
+
 -- A Derivation is a sequence of steps applied (along with the intermediate
 -- term) that details steps taken by our algorithm.
 -- **Note that you should keep the most recent step at the head of the list.**
